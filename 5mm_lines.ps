@@ -1,0 +1,38 @@
+%!
+
+% We are aiming to create a 1404 x 1872 pixel png here.
+
+% various constants
+/top_in_pixels 1872 def
+/right_in_pixels 1404 def
+/pixels2mm right_in_pixels 155 div def
+/five_mm pixels2mm 5 mul def
+
+% Draw vertical line for left margin.
+five_mm 0 moveto
+0 top_in_pixels rlineto
+stroke
+
+% Draw horizontal lines 5mm apart, alternating between dashed and
+% solid lines.
+/tick 0 def
+top_in_pixels five_mm -1 mul 0 {
+
+  % toggle between gray and black lines
+  % tick ==
+  tick 0 eq {
+    /tick 1 def
+    [] 0 setdash
+  }{
+    /tick 0 def
+    [ 10 ] 0 setdash
+  } ifelse
+
+  % draw a horizontal line and use the index for the y coordinate
+  %dup =
+  0 exch moveto
+  right_in_pixels 0 rlineto
+  stroke
+
+} for
+showpage
