@@ -1,4 +1,4 @@
-# postscript
+# Supernote Templates with Postscript
 
 This repo contains examples of PostScript programs that generate
 [Supernote
