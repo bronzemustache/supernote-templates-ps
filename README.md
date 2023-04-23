@@ -6,7 +6,7 @@ templates](https://supernote.com/pages/various-templates-for-various-needs).
 
 ## Prerequisites
 
-To generate these templates you need Ghostscript, make,
+To generate these templates you need Ghostscript and make.
 
 ## make Targets
 
