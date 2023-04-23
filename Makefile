@@ -2,6 +2,10 @@
 ps_dir = ps
 templates_dir = templates
 
+# This is a command that _maybe_ could serve as a substitute for
+# the MacOS and Ubuntu "open".
+# %SystemRoot%\System32\rundll32.exe "%ProgramFiles%\Windows Photo Viewer\PhotoViewer.dll", ImageView_Fullscreen
+
 # We use ghostscript to render the postscript into png files that can
 # be used as Supernote templates.
 GHOSTSCRIPT := gs

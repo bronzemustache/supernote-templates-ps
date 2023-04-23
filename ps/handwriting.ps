@@ -1,0 +1,66 @@
+%!
+
+% Various constants.
+/top_in_pixels 1872 def                 % supernote template is 1872x1404
+/right_in_pixels 1404 def
+/pixels2mm right_in_pixels 155 div def  % A5x screen is 155 mm wide
+/spacer pixels2mm 3.5 mul def           % space between lines
+/big_spacer spacer 3 mul def            % space between line groups
+
+% Draw a horizontal line across the page.
+%
+% Stack: y coordinate of line
+/draw_one_line {
+  0 exch moveto
+  right_in_pixels 0 rlineto
+  stroke
+} def
+
+% Draw the four lines for one line of handwriting practice.  There are
+% two solid lines with a dashed line inbetween, and then another solid
+% line below.  Letters should start at the second solid line.  The
+% dashed line marks the beginning of ascenders for lower case letters.
+% The bottom dashed line is for descenders.
+%
+% Stack: y coordinate of top line
+/draw_linegroup {
+
+  % First line is solid.
+  dup draw_one_line  % y is on stack
+
+  % Second line is dashed.
+  spacer sub dup  % y y is on stack
+  [3 3] 0 setdash % dashed line
+  draw_one_line
+  [] 0 setdash % solid line
+
+  % Third and fourth solid lines.
+  spacer sub dup % y y is on stack
+  draw_one_line
+  spacer sub     % y is on stack
+  draw_one_line
+
+} def
+
+% Parameters of text in header.
+/fontsize 36 def
+/Helvetica fontsize selectfont
+/text_bottom top_in_pixels big_spacer .75 mul sub def
+
+% Draw header.
+right_in_pixels fontsize 15 mul sub
+text_bottom
+moveto
+(date:) show
+right_in_pixels fontsize 35 mul sub
+text_bottom
+moveto
+(practice:) show
+
+% Draw the line groups.
+/start top_in_pixels big_spacer 1.5 mul sub def
+/inc big_spacer -1.5 mul def
+/stop big_spacer def
+start inc stop { draw_linegroup } for
+
+showpage
