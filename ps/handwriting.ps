@@ -3,7 +3,12 @@
 % Various constants.
 /top_in_pixels 1872 def                 % supernote template is 1872x1404
 /right_in_pixels 1404 def
-/pixels2mm right_in_pixels 155 div def  % A5x screen is 155 mm wide
+
+Supernote (a5x) eq
+{ /pixels2mm right_in_pixels 158 div def } % A5x screen is 155 mm wide
+{ /pixels2mm right_in_pixels 119 div def } % A6x screen is 119 mm wide
+ifelse
+
 /spacer pixels2mm 3.5 mul def           % space between lines
 /big_spacer spacer 3 mul def            % space between line groups
 

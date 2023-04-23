@@ -6,11 +6,20 @@
 % template that ships with the Supernote is that the dots are slightly
 % bigger and are therefore easier to see.
 
-% Supernote templates can be 1404 x 1872 pixel png images.
+% Supernote templates can be 1404 x 1872 pixel png images, on both the
+% a5x and a6x.  Everyting is the same, except that absolute distances
+% like 5mm are a different number of pixels on the a5x versus a6x.
 
+% Both a5x and a6x have 1872 x 1404 pixels.
 /top_in_pixels 1872 def
 /right_in_pixels 1404 def
-/pixels2mm right_in_pixels 155 div def
+
+% Define pixels2mm for device we are targeting.
+Supernote (a5x) eq
+{ /pixels2mm right_in_pixels 158 div def }
+{ /pixels2mm right_in_pixels 119 div def }
+ifelse
+
 /five_mm pixels2mm 5 mul def
 
 % Draw "dots" in horizontal lines going from the top to the bottom of

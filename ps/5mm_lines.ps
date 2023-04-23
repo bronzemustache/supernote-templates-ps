@@ -5,7 +5,10 @@
 % various constants
 /top_in_pixels 1872 def
 /right_in_pixels 1404 def
-/pixels2mm right_in_pixels 155 div def
+Supernote (a5x) eq
+{ /pixels2mm right_in_pixels 158 div def } % A5x screen is 155 mm wide
+{ /pixels2mm right_in_pixels 119 div def } % A6x screen is 119 mm wide
+ifelse
 /five_mm pixels2mm 5 mul def
 
 % Draw vertical line for left margin.
