@@ -2,7 +2,7 @@
 
 This repo contains examples of Postscript programs that generate
 [Supernote
-templates](https://supernote.com/pages/various-templates-for-various-needs).
+templates](https://supernote-templates.mostlyuseful.tech).
 
 ## Prerequisites
 
